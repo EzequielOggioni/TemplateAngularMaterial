@@ -1,0 +1,8 @@
+background-color: red;
+.fondo{
+   color: red !important;
+}
+
+/deep/ mat-label{
+    color: yellow;    
+}
