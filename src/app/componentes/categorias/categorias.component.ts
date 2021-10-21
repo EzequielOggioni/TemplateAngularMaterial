@@ -1,3 +1,4 @@
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Categoria } from 'src/app/Clase/categoria';
 import { Producto } from 'src/app/Clase/producto';
@@ -15,6 +16,7 @@ export class CategoriasComponent implements OnInit {
     this.categoriaActual = categoriaSeleccionada;
   }
   constructor() {
+    
 
     let productos = new Array<Producto>();
     productos.push({descripcion: " Cuadro: Acero alivianado" +

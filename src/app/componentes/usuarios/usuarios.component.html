@@ -1,0 +1,11 @@
+<div *ngFor="let usuario of usuarios">
+    {{usuario.nombre}}
+   <input type="button"  (click)="setearUsuario(usuario)" >
+</div>
+<app-lista [productos]="mensajes" > </app-lista>
+
+<input type="button" value="nuevo Mensaje" (click)="agregarNuevo()" [disabled]="!usuarioActual">
+<div *ngIf="nuevo">
+    <input type="text" name="mensaje" [(ngModel)]="mensaje" >
+    <input type="button" value="nuevo Mensaje" (click)="enviar()" >
+</div>

@@ -14,7 +14,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { ProductoComponent } from './componentes/producto/producto.component';
 import { ListaComponent } from './componentes/lista/lista.component';
 import { CategoriasComponent } from './componentes/categorias/categorias.component';
-
+import {HttpClient, HttpClientModule} from '@angular/common/http'
+import { UsuariosComponent } from './componentes/usuarios/usuarios.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { CategoriasComponent } from './componentes/categorias/categorias.compone
     ProductoComponent,
     ListaComponent,
     CategoriasComponent,
-    
+    UsuariosComponent
   ],
   imports: [
     BrowserModule,
@@ -35,9 +36,10 @@ import { CategoriasComponent } from './componentes/categorias/categorias.compone
     ReactiveFormsModule,
     MatInputModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

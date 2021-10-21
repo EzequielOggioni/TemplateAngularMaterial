@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl} from '@angular/forms';
-import { Observable } from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { Usuario } from 'src/app/Clase/usuario';
+import { ApiHelperService } from 'src/app/helper/api-helper.service';
+import { UsuarioHelperService } from 'src/app/helper/usuario-helper.service';
 
 @Component({
   selector: 'app-usando-materia',
@@ -9,24 +10,30 @@ import {map, startWith} from 'rxjs/operators';
   styleUrls: ['./usando-materia.component.css']
 })
 export class UsandoMateriaComponent implements OnInit {
-  myControl = new FormControl();
-  options: string[] = ['One', 'Two', 'Three'];
-  filteredOptions!: Observable<string[]>;
-  constructor() { }
+  usuario: Usuario;
+  nuevo: boolean;
 
-  ngOnInit(): void {
-    this.filteredOptions = this.myControl.valueChanges
-    .pipe(
-      startWith(''),
-      map(value => this._filter(value))
-    );
+  constructor(private ruteo: Router, private api: ApiHelperService, private userSer: UsuarioHelperService) {
+    this.usuario = new Usuario();
+    this.nuevo = false;
   }
 
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
+  ngOnInit(): void { }
 
-    return this.options.filter(option => option.toLowerCase().includes(filterValue));
+  loguear() {
+    this.api.loguear(this.usuario).subscribe(then => { this.logueo(then); }, err => alert(err.Message));
   }
 
+  logueo(resp: Usuario[]) {
+    if (resp.length == 0) 
+      alert("usuario invalido");
+     else {
+      this.userSer.setUsuario(resp[0]);
+      this.ruteo.navigateByUrl('usuarios');
+    }
+  }
 
+  registrar() {
+    this.api.registrar(this.usuario).subscribe(then => { this.logueo(then); }, err => alert(err.Message));
+  }
 }

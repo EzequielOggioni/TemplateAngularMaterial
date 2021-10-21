@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Mensaje } from 'src/app/Clase/mensaje';
 import { Producto } from 'src/app/Clase/producto';
 
 @Component({
@@ -8,7 +9,7 @@ import { Producto } from 'src/app/Clase/producto';
 })
 export class ListaComponent implements OnInit {
 
-  @Input() productos!:Producto[]
+  @Input() productos!:Mensaje[]
   constructor() { 
   
   }

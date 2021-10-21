@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Mensaje } from 'src/app/Clase/mensaje';
 import { Producto } from 'src/app/Clase/producto';
 
 @Component({
@@ -10,14 +11,14 @@ export class ProductoComponent implements OnInit {
 
   constructor() { }
  
-  @Input() producto!:Producto;
+  @Input() producto!:Mensaje;
 
   ngOnInit(): void {
    
   }
 
   AgregarCarrito(){
-    let carrito :Producto[]= localStorage.getItem("carrito")?JSON.parse(localStorage.getItem("carrito")??""):[];
+    let carrito :Mensaje[]= localStorage.getItem("carrito")?JSON.parse(localStorage.getItem("carrito")??""):[];
     carrito.push(this.producto);
     localStorage.setItem("carrito",JSON.stringify(carrito));
     console.log(carrito);

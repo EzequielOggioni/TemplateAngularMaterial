@@ -1,25 +1,32 @@
 <div class="fondoNegro">
-<form class="example-form">
+  <form class="example-form">
     <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>Number</mat-label>
-      <input type="text"
-             placeholder="Elija el numero"
-             aria-label="Number"
-             matInput
-             [formControl]="myControl"
-             [matAutocomplete]="auto">
-      <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-          {{option}}
-        </mat-option>
-      </mat-autocomplete>
+      <mat-label>usuario</mat-label>
+      <input name="usuario" type="text" matInput [(ngModel)]="usuario.usuario">
     </mat-form-field>
     <mat-form-field appearance="fill">
-        <mat-label>Fecha de Nacimiento</mat-label>
-        <input class="fondo" matInput [matDatepicker]="picker">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker  #picker></mat-datepicker>
-      </mat-form-field>  
-</form>
+      <mat-label>pass</mat-label>
+      <input type="password" name="pass" class="fondo" matInput [(ngModel)]="usuario.pass">
+    </mat-form-field>
+    <div *ngIf="!nuevo">
+      <input type="button" value="Aceptar" (click)="loguear()">
+      <input type="button" value="registrar" (click)="nuevo=true">
+    </div>
   
-</div>  
+  <div *ngIf="nuevo">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Nombre</mat-label>
+      <input name="Nombre" type="text" matInput [(ngModel)]="usuario.nombre">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Apellido</mat-label>
+      <input type="Apellido" name="apellido" class="fondo" matInput [(ngModel)]="usuario.apellido">
+    </mat-form-field>  
+    <input type="button" value="crear" (click)="registrar()">
+    <input type="button" value="volve" (click)="nuevo=false">
+
+  </div>  
+  </form>
+
+
+</div>
